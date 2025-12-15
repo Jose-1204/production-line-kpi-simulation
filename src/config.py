@@ -2,7 +2,7 @@
 """
 Config de la simulación de una línea de producción.
 
-Aquí guardamos todos los parámetros del modelo en un solo lugar.
+Aquí se guardan los parámetros del modelo en un solo lugar.
 Para mayor facilidad de mantenimiento.
 """
 

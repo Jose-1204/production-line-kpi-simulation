@@ -87,7 +87,7 @@ def generate_dataset(seed=42):
 
     df = pd.DataFrame(data)
 
-    # Validaciones para asegurar coherencia
+    # Validaciones 
     assert (df["units_produced"] >= 0).all()
     assert (df["units_defective"] >= 0).all()
     assert (df["downtime_minutes"] >= 0).all()
@@ -96,7 +96,7 @@ def generate_dataset(seed=42):
     return df
 
 def main():
-    # Se obtiene la ruta raíz del proyecto
+    # Obtener ruta raíz del proyecto
     project_root = Path(__file__).resolve().parents[1]
     data_path = project_root / "data"
     data_path.mkdir(exist_ok=True)
@@ -107,7 +107,7 @@ def main():
     df = generate_dataset(seed=42)
     df.to_csv(output_file, index=False)
 
-    # Resumen rápido para verificar que todo tenga sentido
+    # Resumen para validar datos
     total_production = int(df["units_produced"].sum())
     total_defects = int(df["units_defective"].sum())
     total_downtime = int(df["downtime_minutes"].sum())
