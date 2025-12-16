@@ -1,13 +1,13 @@
 
 """
-Config de la simulación de una línea de producción.
+Config de la simulacion de una linea de produccion.
 
-Aquí se guardan los parámetros del modelo en un solo lugar.
+Aqui se guardan los parametros del modelo en un solo lugar.
 Para mayor facilidad de mantenimiento.
 """
 
 # -----------------------------
-# Parámetros generales
+# Parametros generales
 # -----------------------------
 
 DIAS_SIMULACION = 30
@@ -17,7 +17,7 @@ DURACION_TURNO_HORAS = 8
 
 
 # -----------------------------
-# Producción por turno
+# Produccion por turno
 # -----------------------------
 # Valores promedio y variabilidad por turno (unidades por turno)
 
@@ -52,7 +52,7 @@ TASA_DEFECTOS_POR_TURNO = {
 # -----------------------------
 # Paros operativos por turno
 # -----------------------------
-# Probabilidad de paro y duración del paro en minutos
+# Probabilidad de paro y duracion del paro en minutos
 
 PAROS_POR_TURNO = {
     "mañana": {

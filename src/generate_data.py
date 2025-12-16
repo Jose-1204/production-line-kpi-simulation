@@ -3,7 +3,7 @@ import pandas as pd
 from pathlib import Path
 
 
-# Se importan los parámetros definidos en config.py
+# parametros definidos en config.py
 from config import (
     DIAS_SIMULACION,
     TURNOS,
@@ -16,17 +16,16 @@ from config import (
 def safe_int(value):
     """
     Convierte a entero y elimina valores negativos.
-    Lo usamos porque la producción y los paros no pueden ser negativos.
     """
     return int(max(0, round(value)))
 
 def simulate_shift(day, shift, rng):
     """
-    Simula un solo turno de producción para un día específico.
+    Simula un solo turno de produccion para un dia especifico.
     Devuelve un diccionario con los datos del turno.
     """
 
-    # 1. Producción base (antes de considerar paros)
+    # 1. Produccion base (antes de considerar paros)
     prod_config = PRODUCCION_POR_TURNO[shift]
     base_production = rng.normal(
         loc=prod_config["media"],
@@ -46,19 +45,19 @@ def simulate_shift(day, shift, rng):
         )
         downtime_minutes = safe_int(downtime)
 
-    # 3. Ajustar producción según el tiempo de paro
+    # 3. Ajustar produccion segun el tiempo de paro
     minutos_turno = DURACION_TURNO_HORAS * 60
 
-    # El paro no puede ser mayor que la duración total del turno
+    # El paro no puede ser mayor que la duracion total del turno
     downtime_minutes = min(downtime_minutes, minutos_turno)
 
-    # Proporción de tiempo realmente trabajado
+    # Proporcion de tiempo realmente trabajado
     disponibilidad = 1 - (downtime_minutes / minutos_turno)
 
-    # Producción final del turno
+    # Produccion final del turno
     unidades_producidas = safe_int(base_production * disponibilidad)
 
-    # 4. Cálculo de unidades defectuosas
+    # 4. Calculo de unidades defectuosas
     tasa_defectos = TASA_DEFECTOS_POR_TURNO[shift]
     unidades_defectuosas = rng.binomial(
         n=unidades_producidas,
@@ -75,7 +74,7 @@ def simulate_shift(day, shift, rng):
 
 def generate_dataset(seed=42):
     """
-    Genera el dataset completo recorriendo días y turnos.
+    dataset recorriendo dias y turnos.
     """
     rng = np.random.default_rng(seed)
     data = []
@@ -96,7 +95,7 @@ def generate_dataset(seed=42):
     return df
 
 def main():
-    # Obtener ruta raíz del proyecto
+    # Obtener ruta raiz del proyecto
     project_root = Path(__file__).resolve().parents[1]
     data_path = project_root / "data"
     data_path.mkdir(exist_ok=True)
