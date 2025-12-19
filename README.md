@@ -1,26 +1,49 @@
-
 # Production Line KPI Simulation
 
-Este proyecto simula cómo funciona una línea de producción real para entender mejor su rendimiento día a día.
+Este proyecto simula una linea de produccion sencilla con el objetivo de analizar
+el desempeno de los turnos de trabajo usando datos generados artificialmente
 
-Entender cómo la producción, los defectos y las paradas impactan el desempeño de la línea. Miramos esto tanto en el tiempo como entre turnos diferentes, para ver dónde se puede mejorar.
-
-## Objetivo del proyecto
-
-Generar datos de producción simulados y usarlos para analizar el rendimiento de la línea, identificando dónde hay problemas y qué se puede mejorar.
-
-## Alcance actual
-
-El proyecto actualmente solo tiene la estructura básica y los parámetros de configuración listos.
-Más adelante se van a agregar la generación de datos, el análisis de métricas y las visualizaciones.
-
-## Tecnologías previstas
-
-- Python
-- pandas
-- numpy
-- matplotlib
+Este proyecto es una practica de analisis de datos 
+aplicada a la ingenieria industrial
 
 ---
 
+## Objetivo
+
+Analizar que turno presenta peor desempeno considerando dos aspectos clave:
+- tasa de defectos (calidad)
+- tiempo de paro promedio (downtime)
+
+El analisis permite identificar diferencias entre turnos y entender
+donde pueden existir problemas operativos
+
+---
+## Estructura del proyecto
+
+- `src/`
+  - `config.py`: parametros de la simulacion (turnos, produccion, defectos, paros)
+  - `generate_data.py`: genera datos simulados de produccion en formato CSV
+  - `analyze_data.py`: analiza los datos y muestra un resumen por turno en consola
+- `data/`
+  - contiene los archivos CSV generados 
+- `notebooks/`
+  - carpeta para visualizaciones futuras
+
+---
+## Flujo del proyecto
+
+1. Se definen parametros de simulacion por turno
+2. Se generan datos diarios de produccion, defectos y paros
+3. Se analizan los datos agrupando por turno
+4. Se imprime un reporte con conclusiones claras
+
+---
+
+## ejecutar el proyecto
+
+```bash
+pip install -r requirements.txt
+python src/generate_data.py 
+python src/analyze_data.py
+```
 
